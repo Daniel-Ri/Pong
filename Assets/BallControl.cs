@@ -8,7 +8,7 @@ public class BallControl : MonoBehaviour
     private Rigidbody2D rigidBody2D;
 
     // Besarnya gaya awal yang diberikan untuk mendorong bola
-    public float xInitialForce;
+    public float totalInitialForce;
     public float yInitialForce;
 
     // Titik asal lintasan bola saat ini
@@ -46,6 +46,9 @@ public class BallControl : MonoBehaviour
 
         // Tentukan nilai acak antara 0 (inklusif) dan 2 (eksklusif)
         float randomDirection = Random.Range(0, 2);
+
+        // Tentukan gaya x dari rumus Pitagoras
+        float xInitialForce = Mathf.Sqrt(Mathf.Pow(totalInitialForce, 2) - Mathf.Pow(yRandomInitialForce, 2));
 
         // Jika nilainya di bawah 1, bola bergerak ke kiri. 
         // Jika tidak, bola bergerak ke kanan.
